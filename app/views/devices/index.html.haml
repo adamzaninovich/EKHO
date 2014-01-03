@@ -1,0 +1,13 @@
+- if @devices.any?
+  %h1 Available Devices
+  .list-group
+    - @devices.each do |device|
+      = link_to device_path(device.name.parameterize), class: 'list-group-item' do
+        .media
+          = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
+          %h4.list-group-item-heading= device.name
+          %p.list-group-item-text= device.model
+- else
+  %h1
+    Could not find any devices
+  = link_to 'try again?', devices_path

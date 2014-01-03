@@ -1,0 +1,9 @@
+%h1
+  =@device.name
+  %small= @device.model
+
+= image_tag "#{@device.model.parameterize}.png", width: '300px'
+
+- if @device.speaker?
+  = render partial: 'speaker_controls', locals: { now_playing: @device.now_playing, device_name: @device.name.parameterize }
+
