@@ -5,5 +5,15 @@
 = image_tag "#{@device.model.parameterize}.png", width: '300px'
 
 - if @device.speaker?
-  = render partial: 'speaker_controls', locals: { now_playing: @device.now_playing, device_name: @device.name.parameterize }
+  = render partial: 'speaker_controls', locals: { device: @device }
+-#  :coffee
+-#    get_current = ->
+-#      alert 'getting script'
+-#      url = "#{now_playing_path(@device.name.parameterize, format: 'js')}"
+-#      $.getScript(url).done ->
+-#        alert 'done'
+-#      return
+-#    $ ->
+-#      setTimeout get_current, 1000
+-#      return
 

@@ -1,12 +1,9 @@
 #now-playing
   %h4 Currently Playing
-
   %p
-    = now_playing[:artist]
+    = device.now_playing[:artist]
     &mdash;
-    = now_playing[:title]
-  %p #{now_playing[:current_position]} / #{now_playing[:track_duration]}
-
--#  :coffee
--#    $ ->
--#      $.getScript #{now_playing_path}
+    = device.now_playing[:title]
+  %p #{device.now_playing[:current_position]} / #{device.now_playing[:track_duration]}
+  %p
+    Volume: #{device.volume}/100

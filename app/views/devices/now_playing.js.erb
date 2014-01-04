@@ -1,1 +1,10 @@
-alert('yo');
+alert('got script');
+
+var html = "<%= render partial: 'now_playing', locals: {device: @device} %>";
+$('#now-playing').html(html);
+
+var get_current = function(){
+  $.getScript("<%= now_playing_path(@device.name.parameterize, format: 'js') %>");
+}
+
+setTimeout(get_current, 1000);
