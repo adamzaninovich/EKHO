@@ -1,6 +1,3 @@
-= render partial: 'now_playing', locals: { device: device }
-- device_name = device.name.parameterize
-
 .btn-group.btn-lg
   = link_to previous_song_path(device_name), remote:true, method: :post, class: 'btn btn-default btn-lg' do
     %span.glyphicon.glyphicon-step-backward

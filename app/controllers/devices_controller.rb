@@ -9,8 +9,8 @@ class DevicesController < ApplicationController
   end
 
   def now_playing
+    @poll = true
     get_device
-    render 'now_playing', format: :js
   end
 
   # controls
@@ -18,26 +18,31 @@ class DevicesController < ApplicationController
   def pause
     get_device
     @device.pause
+    render "now_playing"
   end
 
   def play
     get_device
     @device.play
+    render "now_playing"
   end
 
   def next
     get_device
     @device.next
+    render "now_playing"
   end
 
   def previous
     get_device
     @device.previous
+    render "now_playing"
   end
 
   def vol_up
     get_device
     @device.volume += 10
+    render "now_playing"
   end
 
   def vol_down
@@ -47,6 +52,7 @@ class DevicesController < ApplicationController
     else
       @device.volume = 0
     end
+    render "now_playing"
   end
 
   private
