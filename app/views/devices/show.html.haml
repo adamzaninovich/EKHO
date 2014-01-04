@@ -9,8 +9,9 @@
     - if @device.speaker?
       #now-playing.jumbotron{data:{url: now_playing_path(@device.name.parameterize)}}
         = render 'now_playing'
-.row
-  .col-lg-12
-    %center
-      = render partial: 'speaker_controls', locals: { device_name: @device.name.parameterize }
+- if @device.speaker?
+  .row
+    .col-lg-12
+      %center
+        = render partial: 'speaker_controls', locals: { device_name: @device.name.parameterize }
 

@@ -3,9 +3,11 @@
 %p
   by
   %strong= @device.now_playing[:artist]
-%p
-  %strong #{@device.now_playing[:current_position]}
-  \/ #{@device.now_playing[:track_duration]}
+
+.progress
+  .progress-bar{style:"width: #{percent_played @device.now_playing}%"}
+    #{format_time @device.now_playing[:current_position]}
 %p
   %strong Volume:
-  #{@device.volume}/100
+  .progress
+    .progress-bar{style:"width: #{@device.volume}%"}
