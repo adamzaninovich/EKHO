@@ -1,17 +1,17 @@
 .row
-  .col-lg-6
+  .col-sm-6.col-xs-12
     %h1
       = @device.name
       %small= @device.model
     = image_tag "#{@device.model.parameterize}.png", width: '300px'
 
-  .col-lg-6
+  .col-sm-6.col-xs-12
     - if @device.speaker?
       #now-playing.jumbotron{data:{url: now_playing_path(@device.name.parameterize)}}
         = render 'now_playing'
 - if @device.speaker?
   .row
-    .col-lg-12
+    .col-sm-12.col-xs-12
       %center
         = render partial: 'speaker_controls', locals: { device_name: @device.name.parameterize }
 
