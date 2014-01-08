@@ -3,6 +3,9 @@ Ekho::Application.routes.draw do
   resources :devices
   root 'devices#index'
 
+  post '/sms/control' => 'sms#control'
+  post '/sms/play' => 'sms#control'
+
   get  '/devices/:id/now_playing'            => 'devices#now_playing', as: 'now_playing', format: :js
   post '/devices/:id/control/song/previous'  => 'devices#previous',    as: 'previous_song'
   post '/devices/:id/control/song/pause'     => 'devices#pause',       as: 'pause_song'
