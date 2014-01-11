@@ -32,12 +32,13 @@
       = link_to device_path(device.name.parameterize), class: 'list-group-item' do
         .media
           .row
-            .col-sm-4
+            .col-xs-12.col-sm-4
               - slaves.each do |slave|
                 = image_tag "#{slave.model.parameterize}.png", width: '48px', class: 'pull-left'
               %h4.list-group-item-heading= device.name
               %p.list-group-item-text= slaves.map(&:model).join ', '
-            .col-sm-8
+            .col-xs-2
+            .col-xs-10.col-sm-8
               %p
                 - if device.now_playing.nil?
                   No Music
@@ -57,11 +58,12 @@
       = link_to device_path(device.name.parameterize), class: 'list-group-item' do
         .media
           .row
-            .col-sm-4
+            .col-xs-12.col-sm-4
               = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
               %h4.list-group-item-heading= device.name
               %p.list-group-item-text= device.model
-            .col-sm-8
+            .col-xs-2
+            .col-xs-10.col-sm-8
               %p
                 - if device.now_playing.nil?
                   No Music
