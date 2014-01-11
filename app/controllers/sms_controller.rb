@@ -21,6 +21,14 @@ class SmsController < ApplicationController
 
   def perform action
     case action
+    when /system/
+      m = ["There are"]
+      m << pluralize sonos.groups.count, 'group' if sonos.groups.any?
+      m << pluralize sonos.pairs.count, 'pair' if sonos.pairs.any?
+      m << pluralize sonos.speakers.count, 'speaker' if sonos.speakers.any?
+      m << pluralize sonos.accessories.count, 'accessory' if sonos.accessories.any?
+      m << "in the system"
+      m.join ' '
     when /what.*vol/
       "The volume is set to #{speaker.volume}"
     when /(current|playing)/
@@ -58,7 +66,16 @@ class SmsController < ApplicationController
   end
 
   def perform_all action
+    view = ActionView::Base.new
     case action
+    when /system/
+      m = ["There are"]
+      m << pluralize sonos.groups.count, 'group' if sonos.groups.any?
+      m << pluralize sonos.pairs.count, 'pair' if sonos.pairs.any?
+      m << pluralize sonos.speakers.count, 'speaker' if sonos.speakers.any?
+      m << pluralize sonos.accessories.count, 'accessory' if sonos.accessories.any?
+      m << "in the system"
+      m.join ' '
     when /what.*vol/
       sonos.speakers.map do |speaker|
         "The #{speaker.name} volume is set to #{speaker.volume}"

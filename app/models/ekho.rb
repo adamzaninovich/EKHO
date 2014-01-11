@@ -7,6 +7,22 @@ module EKHO
       @system = ::Sonos::System.new
     end
 
+    def groups
+      get_devices[:groups]
+    end
+
+    def pairs
+      get_devices[:pairs]
+    end
+
+    def accessories
+      get_devices[:accessories]
+    end
+
+    def speakers
+      get_devices[:speakers]
+    end
+
     def get_devices
       @devices ||= begin
         groups = {}
