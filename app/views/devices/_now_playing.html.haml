@@ -1,12 +1,17 @@
 -#= image_tag @device.now_playing[:album_art]
-%h2= @device.now_playing[:title]
-%p
-  by
-  %strong= @device.now_playing[:artist]
+- if @device.now_playing.nil?
+  %h2 No Music
+- elsif @device.now_playing[:title].include? '?'
+  %h2 Streaming Radio
+- else
+  %h2= @device.now_playing[:title]
+  %p
+    by
+    %strong= @device.now_playing[:artist]
 
-.progress
-  .progress-bar{style:"width: #{percent_played @device.now_playing}%"}
-    #{format_time @device.now_playing[:current_position]}
+  .progress
+    .progress-bar{style:"width: #{percent_played @device.now_playing}%"}
+      #{format_time @device.now_playing[:current_position]}
 %p
   %strong Volume:
   .progress

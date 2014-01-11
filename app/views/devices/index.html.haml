@@ -1,13 +1,91 @@
-- if @devices.any?
-  %h1 Available Devices
+%h1 Your Sonos System
+
+- if @devices[:groups].any?
+  %h2 Groups
+  - @devices[:groups].each do |master, slaves|
+    .panel.panel-default
+      .panel-heading
+        %p.panel-title
+          - if slaves.first.now_playing.nil?
+            No Music
+          - elsif slaves.first.now_playing[:title].include? '?'
+            Streaming radio
+          - else
+            Now playing
+            %strong= slaves.first.now_playing[:title]
+            by
+            %strong= slaves.first.now_playing[:artist]
+      .panel-body
+        .list-group{style: "margin-bottom: 0;"}
+          - slaves.each do |device|
+            = link_to device_path(device.name.parameterize), class: 'list-group-item' do
+              .media
+                = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
+                %h4.list-group-item-heading= device.name
+                %p.list-group-item-text= device.model
+
+- if @devices[:pairs].any?
+  %h2 Speaker Pairs
   .list-group
-    - @devices.each do |device|
+    - @devices[:pairs].each do |master, slaves|
+      - device = slaves.first
+      = link_to device_path(device.name.parameterize), class: 'list-group-item' do
+        .media
+          .row
+            .col-sm-4
+              - slaves.each do |slave|
+                = image_tag "#{slave.model.parameterize}.png", width: '48px', class: 'pull-left'
+              %h4.list-group-item-heading= device.name
+              %p.list-group-item-text= slaves.map(&:model).join ', '
+            .col-sm-8
+              %p
+                - if device.now_playing.nil?
+                  No Music
+                - elsif device.now_playing[:title].include? '?'
+                  Streaming radio
+                - else
+                  Now playing
+                  <br>
+                  %strong= device.now_playing[:title]
+                  by
+                  %strong= device.now_playing[:artist]
+
+- if @devices[:speakers].any?
+  %h2 Speakers
+  .list-group
+    - @devices[:speakers].each do |device|
+      = link_to device_path(device.name.parameterize), class: 'list-group-item' do
+        .media
+          .row
+            .col-sm-4
+              = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
+              %h4.list-group-item-heading= device.name
+              %p.list-group-item-text= device.model
+            .col-sm-8
+              %p
+                - if device.now_playing.nil?
+                  No Music
+                - elsif device.now_playing[:title].include? '?'
+                  Streaming radio
+                - else
+                  Now playing
+                  <br>
+                  %strong= device.now_playing[:title]
+                  by
+                  %strong= device.now_playing[:artist]
+
+- if @devices[:accessories].any?
+  %h2 Accessories
+  .list-group
+    - @devices[:accessories].each do |device|
       = link_to device_path(device.name.parameterize), class: 'list-group-item' do
         .media
           = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
           %h4.list-group-item-heading= device.name
           %p.list-group-item-text= device.model
-- else
+
+- if @devices[:pairs].empty? && @devices[:accessories].empty? && @devices[:groups].empty? && @devices[:speakers].empty?
   %h1
     Could not find any devices
   = link_to 'try again?', devices_path
+
