@@ -26,7 +26,7 @@ class SmsController < ApplicationController
       m << pluralize sonos.groups.count, 'group' if sonos.groups.any?
       m << pluralize sonos.pairs.count, 'pair' if sonos.pairs.any?
       m << pluralize sonos.speakers.count, 'speaker' if sonos.speakers.any?
-      m << pluralize sonos.accessories.count, 'accessory' if sonos.accessories.any?
+      m << "and #{pluralize sonos.accessories.count, 'accessory'}" if sonos.accessories.any?
       m << "in the system"
       m.join ' '
     when /what.*vol/
