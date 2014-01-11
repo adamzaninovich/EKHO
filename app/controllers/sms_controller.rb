@@ -15,10 +15,6 @@ class SmsController < ApplicationController
 
   private
 
-  def sonos
-    @sonos ||= EKHO::Sonos.new
-  end
-
   def speaker
     @speaker ||= sonos.get_device 'living-room'
   end

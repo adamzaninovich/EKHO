@@ -55,10 +55,4 @@ class DevicesController < ApplicationController
     render "now_playing"
   end
 
-  private
-
-  def sonos
-    @sonos ||= EKHO::Sonos.new
-  end
-
 end
