@@ -33,7 +33,7 @@ class SmsController < ApplicationController
     when /play/
       sonos.speakers.each &:play
       control_action "played"
-    when /pause/
+    when /(pause|stop)/
       sonos.speakers.each &:pause
       control_action "paused"
     when /next/
