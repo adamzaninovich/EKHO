@@ -1,28 +1,7 @@
 class DevicesController < ApplicationController
 
   def index
-    groups = {}
-    pairs = {}
-    accessories = []
-    speakers = []
-    sonos.devices.each do |device|
-      if device.group_master
-        (groups[device.group_master] ||= []) << device
-      else
-        accessories << device
-      end
-    end
-    groups.each do |master, slaves|
-      if slaves.count == 1
-        speakers << slaves.first
-        groups.delete master
-      elsif slaves.map(&:name).uniq.count == 1
-        pairs[master] = slaves
-        groups.delete master
-      end
-    end
-
-    @devices = { pairs: pairs, groups: groups, accessories: accessories, speakers: speakers }
+    @devices = sonos.get_devices
   end
 
   def show
