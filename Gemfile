@@ -5,6 +5,12 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'sqlite3'
 
+# Auth
+gem 'omniauth-google-oauth2', '0.2.2'
+
+# Glass
+gem 'mirror-api', '0.1.1'
+
 group :development do
   gem 'pry'
 end
