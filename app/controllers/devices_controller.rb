@@ -1,4 +1,5 @@
 class DevicesController < ApplicationController
+  before_filter :authorize!
 
   def index
     @devices = sonos.get_devices

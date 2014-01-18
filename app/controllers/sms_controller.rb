@@ -24,9 +24,9 @@ class SmsController < ApplicationController
     case action
     when /system/
       m = ["There are"]
-      m << view.pluralize sonos.groups.count, 'group' if sonos.groups.any?
-      m << view.pluralize sonos.pairs.count, 'pair' if sonos.pairs.any?
-      m << view.pluralize sonos.speakers.count, 'speaker' if sonos.speakers.any?
+      m << view.pluralize(sonos.groups.count, 'group') if sonos.groups.any?
+      m << view.pluralize(sonos.pairs.count, 'pair') if sonos.pairs.any?
+      m << view.pluralize(sonos.speakers.count, 'speaker') if sonos.speakers.any?
       m << "and #{view.pluralize sonos.accessories.count, 'accessory'}" if sonos.accessories.any?
       m << "in the system"
       m.join ' '
@@ -71,10 +71,10 @@ class SmsController < ApplicationController
     case action
     when /system/
       m = ["There are"]
-      m << view.pluralize sonos.groups.count, 'group' if sonos.groups.any?
-      m << view.pluralize sonos.pairs.count, 'pair' if sonos.pairs.any?
-      m << view.pluralize sonos.speakers.count, 'speaker' if sonos.speakers.any?
-      m << view.pluralize sonos.accessories.count, 'accessory' if sonos.accessories.any?
+      m << view.pluralize(sonos.groups.count, 'group') if sonos.groups.any?
+      m << view.pluralize(sonos.pairs.count, 'pair') if sonos.pairs.any?
+      m << view.pluralize(sonos.speakers.count, 'speaker') if sonos.speakers.any?
+      m << view.pluralize(sonos.accessories.count, 'accessory') if sonos.accessories.any?
       m << "in the system"
       m.join ' '
     when /what.*vol/
