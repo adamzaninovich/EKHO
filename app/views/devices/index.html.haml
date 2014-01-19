@@ -23,6 +23,7 @@
                 = image_tag "#{device.model.parameterize}.png", width: '48px', class: 'pull-left'
                 %h4.list-group-item-heading= device.name
                 %p.list-group-item-text= device.model
+                %p= link_to "Send to Glass", glass_update_track_path(device.name.parameterize), remote: true, class: 'btn btn-default'
 
 - if @devices[:pairs].any?
   %h2 Speaker Pairs

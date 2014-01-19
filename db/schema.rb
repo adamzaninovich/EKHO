@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118193226) do
+ActiveRecord::Schema.define(version: 20140118231707) do
+
+  create_table "track_updates", force: true do |t|
+    t.integer  "user_id"
+    t.string   "device_id"
+    t.string   "title"
+    t.string   "artist"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "track_updates", ["user_id"], name: "index_track_updates_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"

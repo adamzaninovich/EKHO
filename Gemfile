@@ -5,6 +5,10 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'sqlite3'
 
+gem 'sidekiq', '~> 2.17.3'
+gem 'sidetiq', '~> 0.5.0'
+gem 'sinatra', require: false
+
 # Auth
 gem 'omniauth-google-oauth2', '0.2.2'
 

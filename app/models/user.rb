@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_mirror_api_client
+    token = Mirror::Api::OAuth.new(GOOGLE_AUTH["key"], GOOGLE_AUTH["secret"], oauth_refresh_token).get_access_token
+    Mirror::Api::Client.new token
+  end
+
 end
 
 # == Schema Information
