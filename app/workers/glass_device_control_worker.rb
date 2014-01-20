@@ -8,7 +8,7 @@ class GlassDeviceControlWorker
     when /play/
       sonos.get_device(device_id).play
     when /pause/
-      sonos.get_device(device_id).pause
+      sonos.system.speakers.each &:pause
     when /next/
       sonos.get_device(device_id).next
     when /previous/
