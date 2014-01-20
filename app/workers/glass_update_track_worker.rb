@@ -28,7 +28,38 @@ class GlassUpdateTrackWorker
       bundle_id: "ekho_tracks:#{device_id}",
       notification: {level:"DEFAULT"},
       menu_items: [
-        {action:"CUSTOM", id:"pause", values:[{displayName:"Pause Song"}]},
+        {
+          action:"CUSTOM",
+          id:"#{device_id}:pause",
+          values:[{
+            iconUrl: "http://weepingangel.no-ip.info:8000/assets/menu_icons/ic_music_pause_50.png",
+            displayName:"Pause Track"
+          }]
+        },
+        {
+          action:"CUSTOM",
+          id:"#{device_id}:play",
+          values:[{
+            iconUrl: "http://weepingangel.no-ip.info:8000/assets/menu_icons/ic_music_play_50.png",
+            displayName:"Play Track"
+          }]
+        },
+        {
+          action:"CUSTOM",
+          id:"#{device_id}:next",
+          values:[{
+            iconUrl: "http://weepingangel.no-ip.info:8000/assets/menu_icons/ic_music_next_50.png",
+            displayName:"Next Track"
+          }]
+        },
+        {
+          action:"CUSTOM",
+          id:"#{device_id}:previous",
+          values:[{
+            iconUrl: "http://weepingangel.no-ip.info:8000/assets/menu_icons/ic_music_previous_50.png",
+            displayName:"Previous Track"
+          }]
+        },
         {action:"READ_ALOUD"},
         {action:"DELETE"}
       ],
