@@ -14,11 +14,6 @@ class DevicesController < ApplicationController
     @device = sonos.get_device params[:id]
   end
 
-  def glass_update_track
-    GlassUpdateTrackWorker.perform_async current_user.id, params[:id]
-    render nothing: true
-  end
-
   # controls
 
   def pause

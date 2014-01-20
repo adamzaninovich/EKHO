@@ -14,5 +14,4 @@
     .col-sm-12.col-xs-12
       %center
         = render partial: 'speaker_controls', locals: { device_name: @device.name.parameterize }
-      %center
-        = link_to "Send to Glass", glass_update_track_path(@device.name.parameterize), remote: true, class: 'btn btn-default'
+
