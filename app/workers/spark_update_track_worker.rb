@@ -7,12 +7,12 @@ class SparkUpdateTrackWorker
 
   sidekiq_options retry: false
 
-  #recurrence do
-  #  minutely.second_of_minute 0, 15, 30, 45
-  #end
+  recurrence do
+    minutely.second_of_minute 0, 10, 20, 30, 40, 50
+  end
 
   def device_id
-    'living-room'
+    'bedroom'
   end
 
   def perform
