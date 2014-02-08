@@ -37,11 +37,7 @@ class SparkUpdateTrackWorker
   end
 
   def format_for_lcd line1, line2
-    "#{format_line line1}#{format_line line2}"
-  end
-
-  def format_line text
-    text.slice(0, 16).ljust 16
+    "#{line1}\\#{line2}"
   end
 
 end
