@@ -17,6 +17,7 @@ class SparkUpdateTrackWorker
 
   def perform
     User.where(provider: 'spark').each do |user|
+      Rails.logger.info user.inspect
       track = TrackUpdate.find_or_init_with user_id: user.id, device_id: device_id
       if track.persisted?
         Rails.logger.info "Not sending #{track.title} by #{track.artist}."
@@ -33,7 +34,7 @@ class SparkUpdateTrackWorker
       message = format_for_lcd artist, title
       Rails.logger.info "Sending Message to Spark: #{message}"
       response = SparkMessageSender.new(device_id).send message
-      Rails.logger.info response.inspect
+      Rails.logger.error "Sending failed!" unless response.ok?
       Rails.logger.info "DONE"
     else
       Rails.logger.error "No Device ID!"
