@@ -13,6 +13,11 @@ class SmsController < ApplicationController
     end
   end
 
+  def next
+    speaker.next
+    render nothing: true
+  end
+
   private
 
   def speaker

@@ -17,7 +17,6 @@ class SparkUpdateTrackWorker
 
   def perform
     User.where(provider: 'spark').each do |user|
-      Rails.logger.info user.inspect
       track = TrackUpdate.find_or_init_with user_id: user.id, device_id: device_id
       if track.persisted?
         Rails.logger.info "Not sending #{track.title} by #{track.artist}."
