@@ -7,9 +7,9 @@ class SparkUpdateTrackWorker
 
   sidekiq_options retry: false
 
-  recurrence do
-    minutely.second_of_minute 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
-  end
+  #recurrence do
+  #  minutely.second_of_minute 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
+  #end
 
   def device_id
     'bedroom'
