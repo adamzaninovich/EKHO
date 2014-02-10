@@ -13,6 +13,13 @@ class SmsController < ApplicationController
     end
   end
 
+  def device
+    device = sonos.get_device(params[:id]) || speaker
+    title = device.now_playing[:title]
+    artist = device.now_playing[:artist]
+    render text: "#{artist}\\#{title}"
+  end
+
   def next
     speaker.next
     render nothing: true
