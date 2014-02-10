@@ -15,6 +15,7 @@ Ekho::Application.routes.draw do
 
   post 'sms/control'
   get  'sms/next'
+  get  'sms/devices/:id/' => 'sms#devices'
 
   get  'devices/:id/glass_update_track'     => 'devices#glass_update_track', as: 'glass_update_track', format: :js
   get  'devices/:id/now_playing'            => 'devices#now_playing', as: 'now_playing', format: :js
